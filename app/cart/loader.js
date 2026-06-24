@@ -1,11 +1,9 @@
 import { cart } from "../../src/lib/cart.js";
+import { products } from "../../src/lib/products.js";
 
 export async function GET() {
-  const response = await fetch("https://fakestoreapi.com/products/");
-  const data = await response.json();
-
   const uniqueId = new Set(cart);
-  const filteredData = data.filter((product) =>
+  const filteredData = products.filter((product) =>
     uniqueId.has(String(product.id)),
   );
 

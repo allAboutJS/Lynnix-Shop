@@ -1,16 +1,14 @@
-import { NotFoundError } from "lynnix";
 import { cart } from "../../../src/lib/cart.js";
+import { products } from "../../../src/lib/products.js";
 
-export async function GET(req) {
-  const response = await fetch(
-    `https://fakestoreapi.com/products/${req.params.id}`,
-  );
+export async function GET(req, res) {
+  const product = products.find((p) => p.id === Number(req.params.id));
 
-  if (!response.ok) {
-    throw new NotFoundError();
+  if (!product) {
+    res.redirect("/");
+    return;
   }
 
-  const product = await response.json();
   const quantity = cart.filter((id) => id === String(product.id)).length;
 
   return {
