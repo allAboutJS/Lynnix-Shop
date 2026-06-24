@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "author": "Victor Onah",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@fastify/busboy": "^3.2.0",
     "body-parser": "^2.3.0",
