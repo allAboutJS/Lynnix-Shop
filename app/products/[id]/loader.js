@@ -1,5 +1,4 @@
 import { NotFoundError } from "lynnix";
-import fetch from "node-fetch";
 import { cart } from "../../../src/lib/cart.js";
 
 export async function GET(req) {
