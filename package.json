@@ -1,0 +1,27 @@
+{
+  "name": "lynnix-shop",
+  "version": "1.0.0",
+  "description": "A demo showcasing how the Lynnix library could be used to create full stack application with HTMX, and Mutor.js",
+  "main": "src/index.js",
+  "author": "Victor Onah",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/busboy": "^3.2.0",
+    "body-parser": "^2.3.0",
+    "cookie": "^1.1.1",
+    "dotenv": "^17.4.2",
+    "lynnix": "^0.0.2",
+    "mutorjs": "^3.0.2",
+    "node-fetch": "^3.3.2",
+    "qs": "^6.15.2",
+    "serve-static": "^2.2.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  },
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./app/assets/styles/app.css -o ./public/assets/styles/app.css --watch",
+    "dev": "tsx watch src/index.js"
+  }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lynnix Shop | Powered by HTMX, Mutor.js, and Lynnix</title>
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body>
+    {{ ::include("@/components/header.html") }}
+
+    <!-- Hero -->
+    <div class="p-6 py-20 text-center space-y-4 bg-blue-100">
+      <h1 class="text-6xl font-bold text-blue-700">Lynnix Shop</h1>
+      <p class="text-2xl">
+        E commerce website powered by Lynnix, Mutor.js, and HTMX
+      </p>
+    </div>
+    <!-- Hero End -->
+
+    <!-- Products -->
+    <div class="p-6 max-w-7xl mx-auto py-20 space-y-12">
+      <h2 class="text-4xl font-bold text-blue-700">Products</h2>
+
+      <!-- Product List -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        {{ for product of data.products }}
+        <!---->
+        {{ ::include("@/components/product.html", product) }}
+        <!---->
+        {{ endfor }}
+      </div>
+      <!-- Product List End -->
+    </div>
+    <!-- Products End -->
+
+    <!-- Scripts -->
+    {{ ::include("@/components/htmx-script.html") }}
+  </body>
+</html>

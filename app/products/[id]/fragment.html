@@ -1,0 +1,51 @@
+<div
+  id="product-actions"
+  hx-get="/products/{{ data.product.id }}"
+  hx-trigger="cart-updated from:body"
+  hx-select="#product-actions"
+  hx-swap="outerHTML"
+>
+  {{ if data.quantity === 0 }}
+
+  <button
+    type="button"
+    hx-post="/cart/add"
+    class="bg-blue-500 text-white px-6 py-2 rounded-md w-full cursor-pointer active:scale-95 transition"
+    hx-vals='{"id":"{{ data.product.id }}"}'
+    hx-swap="none"
+  >
+    Add To Cart
+  </button>
+
+  {{ else }}
+
+  <div class="flex items-center gap-4">
+    <button
+      type="button"
+      hx-delete="/cart/remove"
+      class="bg-red-500 text-white px-6 py-2 rounded-md cursor-pointer active:scale-95 transition"
+      hx-vals='{"id":"{{ data.product.id }}"}'
+      hx-swap="none"
+    >
+      -
+    </button>
+
+    <input
+      value="{{ data.quantity }}"
+      class="px-6 py-2 border border-zinc-400 rounded-md text-center"
+      readonly
+    />
+
+    <button
+      type="button"
+      hx-post="/cart/add"
+      class="bg-green-500 text-white px-6 py-2 rounded-md cursor-pointer active:scale-95 transition"
+      hx-vals='{"id":"{{ data.product.id }}"}'
+      hx-swap="none"
+    >
+      +
+    </button>
+  </div>
+
+  {{ endif }}
+</div>

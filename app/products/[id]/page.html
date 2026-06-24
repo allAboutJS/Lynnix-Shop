@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ data.product.title }}</title>
+
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body>
+    {{ ::include("@/components/header.html") }}
+
+    <main class="max-w-7xl mx-auto p-6 py-16">
+      <div class="grid md:grid-cols-2 gap-16">
+        <!-- Image -->
+        <div
+          class="bg-white rounded-2xl shadow p-10 flex items-center justify-center"
+        >
+          <img
+            src="{{ data.product.image }}"
+            alt="{{ data.product.title }}"
+            class="max-h-125 object-contain"
+          />
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <div
+              class="inline-flex px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium"
+            >
+              {{ data.product.category }}
+            </div>
+
+            <h1 class="text-5xl font-bold text-slate-900">
+              {{ data.product.title }}
+            </h1>
+
+            <div class="text-4xl font-bold text-blue-700">
+              ${{ data.product.price }}
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-4 text-gray-500">
+            <div>⭐ {{ data.product.rating.rate }}</div>
+
+            <div>{{ data.product.rating.count }} reviews</div>
+          </div>
+
+          <!-- Description -->
+          <div class="space-y-3">
+            <h2 class="text-2xl font-semibold">Description</h2>
+
+            <p class="text-gray-600 leading-8">
+              {{ data.product.description }}
+            </p>
+          </div>
+
+          <!-- Actions -->
+          {{ ::include("./fragment.html") }}
+        </div>
+      </div>
+
+      <!-- Related section -->
+      <div class="mt-24 space-y-6">
+        <h2 class="text-3xl font-bold text-blue-700">Product Details</h2>
+
+        <div class="bg-white rounded-2xl shadow p-8">
+          <div class="grid sm:grid-cols-2 gap-8">
+            <div>
+              <div class="text-gray-500 mb-2">Category</div>
+              <div class="font-semibold">{{ data.product.category }}</div>
+            </div>
+
+            <div>
+              <div class="text-gray-500 mb-2">Reviews</div>
+              <div class="font-semibold">{{ data.product.rating.count }}</div>
+            </div>
+
+            <div>
+              <div class="text-gray-500 mb-2">Rating</div>
+              <div class="font-semibold">{{ data.product.rating.rate }}/5</div>
+            </div>
+
+            <div>
+              <div class="text-gray-500 mb-2">Product ID</div>
+              <div class="font-semibold">#{{ data.product.id }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {{ ::include("@/components/htmx-script.html") }}
+  </body>
+</html>

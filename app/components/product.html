@@ -1,0 +1,21 @@
+<div
+  class="border border-zinc-300 rounded-xl bg-zinc-50 hover:shadow p-6 gap-2 flex flex-col justify-between"
+>
+  <img class="aspect-square" src="{{ image }}" alt="" />
+
+  <div class="space-y-2">
+    <p class="text-lg font-medium text-blue-500">
+      <a href="/products/{{ id }}">{{ title }}</a>
+    </p>
+    <p class="text-2xl font-medium">${{ price.toLocaleString() }}</p>
+    <button
+      type="button"
+      hx-post="/cart/add"
+      hx-vals='{"id":"{{ id }}"}'
+      hx-swap="none"
+      class="bg-blue-500 text-white px-6 py-2 rounded-md w-full cursor-pointer active:scale-95 transition"
+    >
+      Add To Cart
+    </button>
+  </div>
+</div>
